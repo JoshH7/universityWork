@@ -1,0 +1,8 @@
+##Setting up network for VMs
+resources:
+- name: network
+  type: compute.v1.network
+  properties:
+    routingConfig:
+      routingMode: REGIONAL
+    autoCreateSubnetworks: true

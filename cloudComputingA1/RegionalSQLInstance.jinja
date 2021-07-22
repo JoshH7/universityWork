@@ -1,0 +1,24 @@
+##Edited Qwiklabs file for creating and deploying regional SQL Databases: https://google.qwiklabs.com/focuses/647?parent=catalog
+{% set deployment_name = env['deployment']  %}
+{% set instance_name = deployment_name + '-instance'  %}
+{% set database_name = deployment_name + '-db'  %}
+{% set region = 'us-central1'  %}
+{% set tier = 'db-n1-standard-1'  %}
+
+resources:
+- name: regional-database-instance
+  type: gcp-types/sqladmin-v1beta4:instances
+  properties:
+    region: europe-west1
+    settings:
+      tier: db-n1-standard-1
+      backupConfiguration:
+        binaryLogEnabled: true
+        enabled: true
+
+- name: regional-database
+  type: gcp-types/sqladmin-v1beta4:databases
+  properties:
+    name: regional-database
+    instance: $(ref.{{ instance_name }}.name)
+    charset: utf8

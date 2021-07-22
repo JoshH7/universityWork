@@ -1,0 +1,13 @@
+#List of jinja file imports to create and deploy the VM/Firewall/network and database
+imports:
+- path: VMRegional.jinja
+- path: VMMultiRegional.jinja
+- path: network.jinja
+- path: firewall.jinja
+- path: main.jinja
+- path: RegionalSQLInstance.jinja
+- path: MultiRegionalSQLInstance.jinja
+
+resources:
+- name: main
+  type: main.jinja
